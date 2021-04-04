@@ -33,6 +33,7 @@ This template comes with:
 1. Clone this repo
 1. Install PostgreSQL in case you don't have it
 1. Run `bootstrap.sh` with the name of your your project like `./bootstrap.sh my_awesome_project`
+1. create environment variable export DB_NAME=rails_api_base
 1. `rspec` and make sure all tests pass
 1. `rails s`
 1. You can now try your REST services!
