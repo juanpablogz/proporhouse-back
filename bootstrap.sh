@@ -20,7 +20,7 @@ yarn
 cp .env.sample .env
 
 # copy database configuration and change the project name with the given one
-sed "s/sample_project/${project_name}/g" config/database.yml.example > config/database.yml
+# sed "s/sample_project/${project_name}/g" config/database.yml.example > config/database.yml
 
 # setup database
 bundle exec rails db:setup
