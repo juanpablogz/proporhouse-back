@@ -19,5 +19,5 @@
 class Offer < ApplicationRecord
   belongs_to :property
   belongs_to :user
-  has_many :promise_purchases
+  has_many :promise_purchases, dependent: :destroy
 end

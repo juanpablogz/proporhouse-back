@@ -15,6 +15,6 @@
 FactoryBot.define do
   factory :department do
     country { nil }
-    name { "MyString" }
+    name { 'MyString' }
   end
 end

@@ -21,7 +21,7 @@ FactoryBot.define do
     property { nil }
     user { nil }
     price { 1.5 }
-    expires { "2021-04-06" }
+    expires { '2021-04-06' }
     status_offer { 1 }
   end
 end

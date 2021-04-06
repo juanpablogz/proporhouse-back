@@ -15,6 +15,6 @@
 FactoryBot.define do
   factory :neighborhood do
     city { nil }
-    name { "MyString" }
+    name { 'MyString' }
   end
 end

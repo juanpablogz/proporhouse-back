@@ -9,6 +9,6 @@
 #
 FactoryBot.define do
   factory :country do
-    name { "MyString" }
+    name { 'MyString' }
   end
 end

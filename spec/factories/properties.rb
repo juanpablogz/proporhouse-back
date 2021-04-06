@@ -20,7 +20,7 @@ FactoryBot.define do
   factory :property do
     neighborhood { nil }
     user { nil }
-    address { "MyString" }
+    address { 'MyString' }
     lat { 1.5 }
     lgn { 1.5 }
   end

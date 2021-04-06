@@ -41,9 +41,9 @@ class User < ApplicationRecord
 
   before_validation :init_uid
 
-  has_many :properties
-  has_many :offers
-  has_many :promise_purchases
+  has_many :properties, dependent: :destroy
+  has_many :offers, dependent: :destroy
+  has_many :promise_purchases, dependent: :destroy
   def full_name
     return username if first_name.blank?
 

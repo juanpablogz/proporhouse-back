@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Country < ApplicationRecord
-    has_many :departments
+  has_many :departments, dependent: :destroy
 end

@@ -14,5 +14,5 @@
 #
 class City < ApplicationRecord
   belongs_to :department
-  has_many :neighborhoods
+  has_many :neighborhoods, dependent: :destroy
 end
