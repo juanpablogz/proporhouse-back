@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_004449) do
+ActiveRecord::Schema.define(version: 2021_04_06_011112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -124,6 +124,18 @@ ActiveRecord::Schema.define(version: 2021_04_06_004449) do
     t.index ["city_id"], name: "index_neighborhoods_on_city_id"
   end
 
+  create_table "properties", force: :cascade do |t|
+    t.bigint "neighborhood_id", null: false
+    t.bigint "user_id", null: false
+    t.string "address"
+    t.float "lat"
+    t.float "lng"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["neighborhood_id"], name: "index_properties_on_neighborhood_id"
+    t.index ["user_id"], name: "index_properties_on_user_id"
+  end
+
   create_table "settings", force: :cascade do |t|
     t.string "key", null: false
     t.string "value"
@@ -160,4 +172,6 @@ ActiveRecord::Schema.define(version: 2021_04_06_004449) do
   add_foreign_key "departments", "countries"
   add_foreign_key "exception_hunter_errors", "exception_hunter_error_groups", column: "error_group_id"
   add_foreign_key "neighborhoods", "cities"
+  add_foreign_key "properties", "neighborhoods"
+  add_foreign_key "properties", "users"
 end

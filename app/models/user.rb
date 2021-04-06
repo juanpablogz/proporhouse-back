@@ -40,6 +40,8 @@ class User < ApplicationRecord
 
   before_validation :init_uid
 
+  has_many :properties
+  
   def full_name
     return username if first_name.blank?
 
