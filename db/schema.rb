@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_171441) do
+ActiveRecord::Schema.define(version: 2021_04_06_004449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(version: 2020_07_16_171441) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.bigint "department_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_cities_on_department_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "delayed_jobs", id: :serial, force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
@@ -67,6 +81,14 @@ ActiveRecord::Schema.define(version: 2020_07_16_171441) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.bigint "country_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_departments_on_country_id"
   end
 
   create_table "exception_hunter_error_groups", force: :cascade do |t|
@@ -92,6 +114,14 @@ ActiveRecord::Schema.define(version: 2020_07_16_171441) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["error_group_id"], name: "index_exception_hunter_errors_on_error_group_id"
+  end
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_neighborhoods_on_city_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -126,5 +156,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_171441) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "cities", "departments"
+  add_foreign_key "departments", "countries"
   add_foreign_key "exception_hunter_errors", "exception_hunter_error_groups", column: "error_group_id"
+  add_foreign_key "neighborhoods", "cities"
 end
