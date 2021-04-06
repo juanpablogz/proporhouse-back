@@ -19,4 +19,5 @@
 class Property < ApplicationRecord
   belongs_to :neighborhood
   belongs_to :user
+  has_many :offers
 end

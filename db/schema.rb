@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_011112) do
+ActiveRecord::Schema.define(version: 2021_04_06_215053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -124,6 +124,28 @@ ActiveRecord::Schema.define(version: 2021_04_06_011112) do
     t.index ["city_id"], name: "index_neighborhoods_on_city_id"
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.bigint "property_id", null: false
+    t.bigint "user_id", null: false
+    t.float "price"
+    t.date "expire"
+    t.integer "status_offer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_offers_on_property_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+  end
+
+  create_table "promise_purchases", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "offer_id", null: false
+    t.integer "status_promise_purchase"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_promise_purchases_on_offer_id"
+    t.index ["user_id"], name: "index_promise_purchases_on_user_id"
+  end
+
   create_table "properties", force: :cascade do |t|
     t.bigint "neighborhood_id", null: false
     t.bigint "user_id", null: false
@@ -163,6 +185,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_011112) do
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.json "tokens"
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
@@ -172,6 +195,10 @@ ActiveRecord::Schema.define(version: 2021_04_06_011112) do
   add_foreign_key "departments", "countries"
   add_foreign_key "exception_hunter_errors", "exception_hunter_error_groups", column: "error_group_id"
   add_foreign_key "neighborhoods", "cities"
+  add_foreign_key "offers", "properties"
+  add_foreign_key "offers", "users"
+  add_foreign_key "promise_purchases", "offers"
+  add_foreign_key "promise_purchases", "users"
   add_foreign_key "properties", "neighborhoods"
   add_foreign_key "properties", "users"
 end
