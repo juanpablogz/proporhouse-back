@@ -20,4 +20,5 @@ class Offer < ApplicationRecord
   belongs_to :property
   belongs_to :user
   has_many :promise_purchases, dependent: :destroy
+  validates :property_id, :user_id, :price, :expire, presence: true
 end

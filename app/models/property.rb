@@ -20,4 +20,5 @@ class Property < ApplicationRecord
   belongs_to :neighborhood
   belongs_to :user
   has_many :offers, dependent: :destroy
+  validates :neighborhood_id, :user_id, :address, presence: true
 end

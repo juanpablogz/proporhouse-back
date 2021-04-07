@@ -15,4 +15,5 @@
 class City < ApplicationRecord
   belongs_to :department
   has_many :neighborhoods, dependent: :destroy
+  validates :department_id, :name, presence: true
 end

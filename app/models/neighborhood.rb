@@ -15,4 +15,5 @@
 class Neighborhood < ApplicationRecord
   belongs_to :city
   has_many :properties, dependent: :destroy
+  validates :city_id, :name, presence: true
 end
