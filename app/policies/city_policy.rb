@@ -1,0 +1,2 @@
+class CityPolicy < MasterPolicy
+end

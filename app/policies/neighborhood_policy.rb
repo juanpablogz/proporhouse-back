@@ -1,0 +1,2 @@
+class NeighborhoodPolicy < MasterPolicy
+end

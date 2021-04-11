@@ -1,0 +1,2 @@
+class CountryPolicy < MasterPolicy
+end

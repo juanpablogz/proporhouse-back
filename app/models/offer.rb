@@ -21,4 +21,6 @@ class Offer < ApplicationRecord
   belongs_to :user
   has_many :promise_purchases, dependent: :destroy
   validates :property_id, :user_id, :price, :expire, presence: true
+  enum status_offer: { status_offer_role_undefined: 0, status_offer_in_progress: 1,
+                       status_offer_finished: 2, status_offer_purchase: 3 }
 end

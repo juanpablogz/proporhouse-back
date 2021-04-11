@@ -43,7 +43,7 @@ RSpec.describe PromisePurchase, type: :model do
     promise_purchase = PromisePurchase.new(offer_id: offer.id)
     expect(promise_purchase).not_to be_valid
   end
-  it 'if user not exist cannot be created' do
+  it 'if offer not exist cannot be created' do
     user = User.create!(email: 'admin@example.com', password: 'password')
     promise_purchase = PromisePurchase.new(user_id: user.id)
     expect(promise_purchase).not_to be_valid

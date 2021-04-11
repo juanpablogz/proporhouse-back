@@ -18,4 +18,8 @@ class PromisePurchase < ApplicationRecord
   belongs_to :user
   belongs_to :offer
   validates :user_id, :offer_id, presence: true
+  enum status_promise_purchase: { status_promise_purchase_undefined: 0,
+                                  status_promise_purchase_progress: 1,
+                                  status_promise_purchase_finished: 2,
+                                  tatus_promise_purchase_purchase: 3 }
 end

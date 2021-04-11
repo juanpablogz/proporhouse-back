@@ -44,6 +44,8 @@ class User < ApplicationRecord
   has_many :properties, dependent: :destroy
   has_many :offers, dependent: :destroy
   has_many :promise_purchases, dependent: :destroy
+
+  enum role: { role_undefined: 0, admin: 1, user_platform: 2 }
   def full_name
     return username if first_name.blank?
 

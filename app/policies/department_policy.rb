@@ -1,0 +1,2 @@
+class DepartmentPolicy < MasterPolicy
+end
