@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_215053) do
+ActiveRecord::Schema.define(version: 2021_04_14_150854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_215053) do
     t.integer "status_offer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "active"
     t.index ["property_id"], name: "index_offers_on_property_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
@@ -142,6 +143,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_215053) do
     t.integer "status_promise_purchase"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "active"
     t.index ["offer_id"], name: "index_promise_purchases_on_offer_id"
     t.index ["user_id"], name: "index_promise_purchases_on_user_id"
   end
@@ -154,6 +156,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_215053) do
     t.float "lng"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "active"
     t.index ["neighborhood_id"], name: "index_properties_on_neighborhood_id"
     t.index ["user_id"], name: "index_properties_on_user_id"
   end

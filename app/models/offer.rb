@@ -10,6 +10,7 @@
 #  status_offer :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  active       :boolean
 #
 # Indexes
 #
